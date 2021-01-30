@@ -1,7 +1,8 @@
-import { Component, OnInit, isDevMode } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +12,17 @@ import { UserService } from '../user.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  localProduction = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService
   ) {
-    
+    console.log(environment);
+    if (!!environment && !!environment.localProduction) {
+      this.localProduction = true;
+    }
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -49,8 +54,12 @@ export class LoginComponent implements OnInit {
               const FCUID = data['myFCUID'];
               if (!dbError) {
                 localStorage.setItem('FCUID', FCUID);
-                // window.location.href = 'https://localhost:8443/clearSession.jsp?FCUID=' + FCUID
-                //   + '&dest=' + dest;
+                if (this.localProduction) {
+                  this.router.navigate(['dashboard']);
+                } else {
+                  window.location.href = 'https://localhost:8443/clearSession.jsp?FCUID=' + FCUID
+                    + '&dest=' + dest;
+                }
               } else {
                 this.router.navigate(['']);
               }

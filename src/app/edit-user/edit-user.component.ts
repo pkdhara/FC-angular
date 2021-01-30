@@ -31,7 +31,7 @@ export class EditUserComponent implements OnInit {
     let userId = localStorage.getItem("editUserId");
     if(!userId) {
       alert("Invalid action.")
-      this.router.navigate(['list-user']);
+      this.router.navigate(['dashboard/list-user']);
       return;
     }
     
@@ -42,7 +42,7 @@ export class EditUserComponent implements OnInit {
   }
 
   onSubmit() {
-    this.router.navigate(['']);
+    this.router.navigate(['dashboard/list-user']);
   }
 
 
