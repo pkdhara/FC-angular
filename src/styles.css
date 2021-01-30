@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+.navbar .dropdown-toggle, .navbar .dropdown-menu a {
+  cursor: pointer;
+}
+
+
+.hor-menu ul, .hor-menu li{
+  margin: 0 !important; 
+  padding: 0 !important;
+  list-style: none !important;
+  background-color: #51891E;
+}
+
+a {
+  color: white !important;
+}

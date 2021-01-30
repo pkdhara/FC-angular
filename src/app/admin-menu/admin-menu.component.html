@@ -1,0 +1,29 @@
+
+<div class="page-header">
+  <div class="page-header-menu">
+    <div class="container-fluid">
+      <div class="hor-menu">
+        <ul class="nav navbar-nav">
+          <li class="menu-dropdown classic-menu-dropdown active ">
+            <a [routerLink]="" (click)="switchtoJSP('freshConceptsBackOffice.jsp')">
+              <span class="glyphicon glyphicon-home"></span> Home
+            </a>
+          </li>
+          <li id="Users01" *ngIf='checkIfAccessPresent("Users01")'>
+            <a [routerLink]="" (click)="switchtoJSP('addUser.jsp')">
+              Add User </a>
+          </li>
+          <li id="Users02" *ngIf='checkIfAccessPresent("Users02")'>
+            <a [routerLink]="" (click)="switchtoJSP('manageUsers.jsp')">
+              Manage Users </a>
+          </li>
+          <li id="">
+            <a routerLink="list-user">
+              Angular </a>
+          </li>
+        </ul>
+      </div>
+      <!-- END MEGA MENU -->
+    </div>
+  </div>
+</div>
